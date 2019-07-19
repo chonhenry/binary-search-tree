@@ -29,7 +29,20 @@ class BinarySearchTree:
 					break
 
 	def lookup(self, value):
-		pass
+		current = self.root
+		while(True):
+			if current.value != value:
+				if value < current.value:
+					current = current.left
+				else:
+					current = current.right
+			else:
+				print('value ', value)
+				print('left ', current.left.value)
+				print('right ', current.right.value)
+				break
+			if current == None:
+				break
 
 
 tree = BinarySearchTree();
@@ -40,3 +53,5 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
+
+tree.lookup(20)
