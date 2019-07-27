@@ -89,6 +89,15 @@ class BinarySearchTree:
 					del smallest
 					break
 
+def travesal(root):
+	if root.left != None:
+		travesal(root.left)
+	
+	print(root.value)
+	
+	if root.right != None:
+		travesal(root.right)					
+
 tree = BinarySearchTree();
 #50,28,78,12,40,66,90,9,18,37,43,57,69,81,93,3,10,15,21,30,38,42,46,54,60,67,72,80,84,92,96,13,29,55,56
 tree.insert(50)
