@@ -89,6 +89,43 @@ class BinarySearchTree:
 					del smallest
 					break
 
+	def breadthFirstSearch(self):
+		current = self.root
+		arr = []
+		queue = []
+		queue.append(current)
+
+		while len(queue)>0:
+			current = queue.pop(0)
+			arr.append(current.value)
+			if current.left != None:
+				queue.append(current.left)
+			if current.right != None:
+				queue.append(current.right)
+
+		return arr
+
+	def breadthFirstSearchRecursive(self, queue, arr):
+		if len(queue)==0:
+			return arr
+
+		current = queue.pop(0)
+		arr.append(current.value)
+		if current.left != None:
+			queue.append(current.left)
+		if current.right != None:
+			queue.append(current.right)
+
+		return self.breadthFirstSearchRecursive(queue, arr)
+
+
+	def height(self, r):
+		if r==None:
+			return 0
+		else:
+			return (1 + max(self.height(r.left), self.height(r.right)))
+
+
 def travesal(root):
 	if root.left != None:
 		travesal(root.left)
@@ -96,7 +133,7 @@ def travesal(root):
 	print(root.value)
 	
 	if root.right != None:
-		travesal(root.right)					
+		travesal(root.right)
 
 tree = BinarySearchTree();
 #50,28,78,12,40,66,90,9,18,37,43,57,69,81,93,3,10,15,21,30,38,42,46,54,60,67,72,80,84,92,96,13,29,55,56
@@ -137,4 +174,11 @@ tree.insert(55)
 tree.insert(56)
 
 tree.remove(15)
+
+print(tree.breadthFirstSearch())
+
+print('height: ', tree.height(tree.root))
+
+print(tree.breadthFirstSearchRecursive([tree.root], []))
+
 
