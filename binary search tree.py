@@ -125,15 +125,33 @@ class BinarySearchTree:
 		else:
 			return (1 + max(self.height(r.left), self.height(r.right)))
 
-
-def travesal(root):
+def inOrder(root):
 	if root.left != None:
-		travesal(root.left)
-	
+		inOrder(root.left)
+
 	print(root.value)
-	
+
 	if root.right != None:
-		travesal(root.right)
+		inOrder(root.right)
+
+def preOrder(root):
+	print(root.value)
+
+	if root.left != None:
+		preOrder(root.left)
+
+	if root.right != None:
+		preOrder(root.right)
+
+def postOrder(root):
+	if root.left != None:
+		postOrder(root.left)
+
+	if root.right != None:
+		postOrder(root.right)
+
+	print(root.value)
+
 
 tree = BinarySearchTree();
 #50,28,78,12,40,66,90,9,18,37,43,57,69,81,93,3,10,15,21,30,38,42,46,54,60,67,72,80,84,92,96,13,29,55,56
@@ -176,9 +194,16 @@ tree.insert(56)
 tree.remove(15)
 
 print(tree.breadthFirstSearch())
-
 print('height: ', tree.height(tree.root))
-
 print(tree.breadthFirstSearchRecursive([tree.root], []))
+
+print('inOrder')
+inOrder(tree.root)
+
+print('preOrder')
+preOrder(tree.root)
+
+print('postOrder')
+postOrder(tree.root)
 
 
